@@ -1,264 +1,152 @@
-(function webpackUniversalModuleDefinition(root, factory) {
-	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory();
-	else if(typeof define === 'function' && define.amd)
-		define("jdlx-scraper", [], factory);
-	else if(typeof exports === 'object')
-		exports["jdlx-scraper"] = factory();
-	else
-		root["jdlx-scraper"] = factory();
-})(this, function() {
-return /******/ (function(modules) { // webpackBootstrap
-/******/ 	// The module cache
-/******/ 	var installedModules = {};
-/******/
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
-/******/
-/******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId]) {
-/******/ 			return installedModules[moduleId].exports;
-/******/ 		}
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = installedModules[moduleId] = {
-/******/ 			i: moduleId,
-/******/ 			l: false,
-/******/ 			exports: {}
-/******/ 		};
-/******/
-/******/ 		// Execute the module function
-/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-/******/
-/******/ 		// Flag the module as loaded
-/******/ 		module.l = true;
-/******/
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
-/******/
-/******/
-/******/ 	// expose the modules object (__webpack_modules__)
-/******/ 	__webpack_require__.m = modules;
-/******/
-/******/ 	// expose the module cache
-/******/ 	__webpack_require__.c = installedModules;
-/******/
-/******/ 	// define getter function for harmony exports
-/******/ 	__webpack_require__.d = function(exports, name, getter) {
-/******/ 		if(!__webpack_require__.o(exports, name)) {
-/******/ 			Object.defineProperty(exports, name, {
-/******/ 				configurable: false,
-/******/ 				enumerable: true,
-/******/ 				get: getter
-/******/ 			});
-/******/ 		}
-/******/ 	};
-/******/
-/******/ 	// getDefaultExport function for compatibility with non-harmony modules
-/******/ 	__webpack_require__.n = function(module) {
-/******/ 		var getter = module && module.__esModule ?
-/******/ 			function getDefault() { return module['default']; } :
-/******/ 			function getModuleExports() { return module; };
-/******/ 		__webpack_require__.d(getter, 'a', getter);
-/******/ 		return getter;
-/******/ 	};
-/******/
-/******/ 	// Object.prototype.hasOwnProperty.call
-/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
-/******/
-/******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
-/******/
-/******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
-/******/ })
-/************************************************************************/
-/******/ ([
-/* 0 */
-/***/ (function(module, exports, __webpack_require__) {
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+	typeof define === 'function' && define.amd ? define(factory) :
+	(global['jdlx-scraper'] = factory());
+}(this, (function () { 'use strict';
 
-"use strict";
+var asyncGenerator = function () {
+  function AwaitValue(value) {
+    this.value = value;
+  }
 
+  function AsyncGenerator(gen) {
+    var front, back;
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+    function send(key, arg) {
+      return new Promise(function (resolve, reject) {
+        var request = {
+          key: key,
+          arg: arg,
+          resolve: resolve,
+          reject: reject,
+          next: null
+        };
 
-var _Scraper = __webpack_require__(1);
-
-var _Scraper2 = _interopRequireDefault(_Scraper);
-
-var _Parsers = __webpack_require__(3);
-
-var _Parsers2 = _interopRequireDefault(_Parsers);
-
-var _JsonExtractor = __webpack_require__(4);
-
-var _JsonExtractor2 = _interopRequireDefault(_JsonExtractor);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var scraper = new _Scraper2.default();
-/**
- * Scrapes information from provided document using scrape definitions
- * The point is to create reusable scrape definitions that can be re-used
- * in different scenarios
- *
- * @module Scraper
- */
-
-scraper.registerParser("toText", _Parsers2.default.toText);
-scraper.registerParser("toNumber", _Parsers2.default.toNumber);
-scraper.registerParser("toCurrency", _Parsers2.default.toCurrency);
-scraper.registerParser("trim", _Parsers2.default.trim);
-scraper.registerParser("match", _Parsers2.default.match);
-scraper.registerParser("toAbsolute", _Parsers2.default.toAbsolute);
-
-scraper.registerExtractor("json", _JsonExtractor2.default);
-
-exports.default = scraper;
-
-/***/ }),
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _Runner = __webpack_require__(2);
-
-var _Runner2 = _interopRequireDefault(_Runner);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var Scraper = function () {
-    function Scraper() {
-        _classCallCheck(this, Scraper);
-
-        this.parsers = {};
-        this.extractors = {};
+        if (back) {
+          back = back.next = request;
+        } else {
+          front = back = request;
+          resume(key, arg);
+        }
+      });
     }
 
-    /**
-     * Register a names parser, that can be referenced from the scrape definition.
-     * A parser function will be given three paramers, the value, options and the
-     * context.
-     * 
-     * @param {string} name
-     * @param {function} parser
-     * @param {boolean} override
-     * @returns {void}
-     */
+    function resume(key, arg) {
+      try {
+        var result = gen[key](arg);
+        var value = result.value;
 
-
-    _createClass(Scraper, [{
-        key: "registerParser",
-        value: function registerParser(name, parser, override) {
-            override = override || false;
-            if (this.parsers[name] && !override) {
-                throw "Parser " + name + " already exists";
-            }
-
-            this.parsers[name] = parser;
+        if (value instanceof AwaitValue) {
+          Promise.resolve(value.value).then(function (arg) {
+            resume("next", arg);
+          }, function (arg) {
+            resume("throw", arg);
+          });
+        } else {
+          settle(result.done ? "return" : "normal", result.value);
         }
+      } catch (err) {
+        settle("throw", err);
+      }
+    }
 
-        /**
-         * Set an extractor. The extractor determines how to traverse and extract
-         * nodes from a document.
-         * 
-         * @param {string} name
-         * @param {function} extractor
-         * @param {boolean} override
-         * @returns {void}
-         */
+    function settle(type, value) {
+      switch (type) {
+        case "return":
+          front.resolve({
+            value: value,
+            done: true
+          });
+          break;
 
-    }, {
-        key: "registerExtractor",
-        value: function registerExtractor(name, extractor, override) {
+        case "throw":
+          front.reject(value);
+          break;
 
-            override = override || false;
-            if (this.extractors[name] && !override) {
-                throw "Extractor " + name + " already exists";
-            }
+        default:
+          front.resolve({
+            value: value,
+            done: false
+          });
+          break;
+      }
 
-            this.extractors[name] = extractor;
-        }
+      front = front.next;
 
-        /**
-         * 
-         * @param {object} definition
-         * @param {string} extractor
-         * @param {object} document
-         * @param {object} context
-         * @returns {object}
-         */
+      if (front) {
+        resume(front.key, front.arg);
+      } else {
+        back = null;
+      }
+    }
 
-    }, {
-        key: "scrape",
-        value: function scrape(definition, extractor, document, context) {
-            var runner = this.create(definition, extractor);
-            return runner.scrape(document, context);
-        }
+    this._invoke = send;
 
-        /**
-         * Create a scraper that can be reused with different documents but retains
-         * the same definition.
-         * 
-         * @param {Object} definition
-         * @param {string} extractor
-         * @returns {Runner}
-         */
+    if (typeof gen.return !== "function") {
+      this.return = undefined;
+    }
+  }
 
-    }, {
-        key: "create",
-        value: function create(definition, extractor) {
-            if (!definition) {
-                throw "Definition is not provided!";
-            }
+  if (typeof Symbol === "function" && Symbol.asyncIterator) {
+    AsyncGenerator.prototype[Symbol.asyncIterator] = function () {
+      return this;
+    };
+  }
 
-            if (!this.extractors[extractor]) {
-                throw "Extractor " + name + " doesn't exists or is not registered";
-            }
+  AsyncGenerator.prototype.next = function (arg) {
+    return this._invoke("next", arg);
+  };
 
-            return new _Runner2.default(definition, this.parsers, this.extractors[extractor]);
-        }
-    }]);
+  AsyncGenerator.prototype.throw = function (arg) {
+    return this._invoke("throw", arg);
+  };
 
-    return Scraper;
+  AsyncGenerator.prototype.return = function (arg) {
+    return this._invoke("return", arg);
+  };
+
+  return {
+    wrap: function (fn) {
+      return function () {
+        return new AsyncGenerator(fn.apply(this, arguments));
+      };
+    },
+    await: function (value) {
+      return new AwaitValue(value);
+    }
+  };
 }();
 
-exports.default = Scraper;
-;
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
 
 
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+var classCallCheck = function (instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+};
+
+var createClass = function () {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];
+      descriptor.enumerable = descriptor.enumerable || false;
+      descriptor.configurable = true;
+      if ("value" in descriptor) descriptor.writable = true;
+      Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }
+
+  return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);
+    if (staticProps) defineProperties(Constructor, staticProps);
+    return Constructor;
+  };
+}();
 
 /**
- * Scrapes information from provided document using scrape definitions
- * The point is to create reusable scrape definitions that can be re-used
- * in different scenarios
- *
- * @module Scraper
+ * Run a scraper definition over a suplied document
  */
 
 var Runner = function () {
@@ -276,7 +164,7 @@ var Runner = function () {
      * @param {Function} extractor
      */
     function Runner(definition, parsers, extractor) {
-        _classCallCheck(this, Runner);
+        classCallCheck(this, Runner);
 
         this.definition = definition;
         this.parsers = parsers;
@@ -291,7 +179,7 @@ var Runner = function () {
      */
 
 
-    _createClass(Runner, [{
+    createClass(Runner, [{
         key: "scrape",
         value: function scrape(document, context) {
             //set context to default object
@@ -407,34 +295,110 @@ var Runner = function () {
             return value;
         }
     }]);
-
     return Runner;
 }();
 
-exports.default = Runner;
-exports.Runner = Runner;
+var Scraper = function () {
+    function Scraper() {
+        classCallCheck(this, Scraper);
 
-/***/ }),
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
+        this.parsers = {};
+        this.extractors = {};
+    }
 
-"use strict";
+    /**
+     * Register a names parser, that can be referenced from the scrape definition.
+     * A parser function will be given three paramers, the value, options and the
+     * context.
+     * 
+     * @param {string} name
+     * @param {function} parser
+     * @param {boolean} override
+     * @returns {void}
+     */
 
 
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
+    createClass(Scraper, [{
+        key: "registerParser",
+        value: function registerParser(name, parser, override) {
+            override = override || false;
+            if (this.parsers[name] && !override) {
+                throw "Parser " + name + " already exists";
+            }
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+            this.parsers[name] = parser;
+        }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+        /**
+         * Set an extractor. The extractor determines how to traverse and extract
+         * nodes from a document.
+         * 
+         * @param {string} name
+         * @param {function} extractor
+         * @param {boolean} override
+         * @returns {void}
+         */
+
+    }, {
+        key: "registerExtractor",
+        value: function registerExtractor(name, extractor, override) {
+
+            override = override || false;
+            if (this.extractors[name] && !override) {
+                throw "Extractor " + name + " already exists";
+            }
+
+            this.extractors[name] = extractor;
+        }
+
+        /**
+         * 
+         * @param {object} definition
+         * @param {string} extractor
+         * @param {object} document
+         * @param {object} context
+         * @returns {object}
+         */
+
+    }, {
+        key: "scrape",
+        value: function scrape(definition, extractor, document, context) {
+            var runner = this.create(definition, extractor);
+            return runner.scrape(document, context);
+        }
+
+        /**
+         * Create a scraper that can be reused with different documents but retains
+         * the same definition.
+         * 
+         * @param {Object} definition
+         * @param {string} extractor
+         * @returns {Runner}
+         */
+
+    }, {
+        key: "create",
+        value: function create(definition, extractor) {
+            if (!definition) {
+                throw "Definition is not provided!";
+            }
+
+            if (!this.extractors[extractor]) {
+                throw "Extractor " + name + " doesn't exists or is not registered";
+            }
+
+            return new Runner(definition, this.parsers, this.extractors[extractor]);
+        }
+    }]);
+    return Scraper;
+}();
 
 var Parsers = function () {
     function Parsers() {
-        _classCallCheck(this, Parsers);
+        classCallCheck(this, Parsers);
     }
 
-    _createClass(Parsers, null, [{
+    createClass(Parsers, null, [{
         key: "trim",
 
         /**
@@ -563,24 +527,8 @@ var Parsers = function () {
             return "0";
         }
     }]);
-
     return Parsers;
 }();
-
-exports.default = Parsers;
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.default = queryPath;
-
 
 function queryPath(node, path) {
     if (path && !Array.isArray(path)) {
@@ -593,9 +541,26 @@ function queryPath(node, path) {
 
     var elem = path.shift();
     return queryPath(node[elem], path);
-};
+}
 
-/***/ })
-/******/ ]);
-});
-//# sourceMappingURL=jdlx-scraper.js.map
+/**
+ * Scrapes information from provided document using scrape definitions
+ * The point is to create reusable scrape definitions that can be re-used
+ * in different scenarios
+ *
+ * @module Scraper
+ */
+
+var scraper = new Scraper();
+scraper.registerParser("toText", Parsers.toText);
+scraper.registerParser("toNumber", Parsers.toNumber);
+scraper.registerParser("toCurrency", Parsers.toCurrency);
+scraper.registerParser("trim", Parsers.trim);
+scraper.registerParser("match", Parsers.match);
+scraper.registerParser("toAbsolute", Parsers.toAbsolute);
+
+scraper.registerExtractor("json", queryPath);
+
+return scraper;
+
+})));
