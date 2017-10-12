@@ -9,6 +9,20 @@ defs.getCollection =
                 }]
             }
         };
+
+defs.pickFirstCollection = 
+        {
+            result :{
+                    'testarray': {'$q': 'array'}
+            }
+        };
+
+defs.pickWholeCollection = 
+        {
+            result :{
+                    'testarray': {'$q': 'array', $o:{"all": true}}
+            }
+        };
         
 export default defs;
         

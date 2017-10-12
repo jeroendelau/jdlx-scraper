@@ -33,7 +33,15 @@ defs.nested =
                 'test': {'$q': 'b', '$m':"toText"},
             }
         };
+
+ defs.multi = 
+        {
+            result :{
+                'test': [{'$q': 'non'}, {'$q': 'b'}]
+            }
+        };
         
+
 export default defs;
         
         

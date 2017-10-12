@@ -115,6 +115,8 @@ export default class Runner
                 if (def.$q)
                 {
                     val = this.extractor(node, def.$q);
+                    if(val === undefined){ continue; }
+                    if(Array.isArray(val) && !(def.$o && def.$o.all)){val = val[0];}
                 }
 
                 //Get the atribute and process it

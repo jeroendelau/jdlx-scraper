@@ -146,7 +146,11 @@ var createClass = function () {
 }();
 
 /**
- * Run a scraper definition over a suplied document
+ * Scrapes information from provided document using scrape definitions
+ * The point is to create reusable scrape definitions that can be re-used
+ * in different scenarios
+ *
+ * @module Scraper
  */
 
 var Runner = function () {
@@ -261,6 +265,12 @@ var Runner = function () {
                 val = node;
                 if (def.$q) {
                     val = this.extractor(node, def.$q);
+                    if (val === undefined) {
+                        continue;
+                    }
+                    if (Array.isArray(val) && !(def.$o && def.$o.all)) {
+                        val = val[0];
+                    }
                 }
 
                 //Get the atribute and process it

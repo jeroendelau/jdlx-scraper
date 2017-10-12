@@ -67,8 +67,18 @@ describe('Runner with basic definitions ', () => {
         expect(result).toEqual(expected);
         expect(result.result.test).toBe("2");
     });
+    
+    it('can have fallback definition', function () {
 
-
+        var result = scraper.scrape(basicDefs.multi, "json", basicDoc);
+        var expected =  {
+            result :{
+                'test': 2
+            }
+        };
+        expect(result).toEqual(expected);
+    });
+    
 });
 
 
@@ -129,6 +139,32 @@ describe('Documents with collections ', () => {
         };
         expect(result).toEqual(expected);
     });
+    
+     it('will return first element of array', function () {
+
+        var result = scraper.scrape(collectionDefs.pickFirstCollection, "json", collectionDoc);
+        console.log(result);
+        var expected =  {
+            result :{
+                'testarray': "arra" 
+            }
+        };
+        expect(result).toEqual(expected);
+    });
+    
+    it('will return all element of array with the option all', function () {
+
+        var result = scraper.scrape(collectionDefs.pickWholeCollection, "json", collectionDoc);
+        console.log(result);
+        var expected =  {
+            result :{
+                'testarray': ["arra", "arrb"] 
+            }
+        };
+        expect(result).toEqual(expected);
+    });
+
+
 });
 
 describe('Runner macro ability ', () => {

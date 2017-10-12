@@ -11,7 +11,8 @@ export default {
                 'e': "efg", 
                 'f': "fgh"
             },
-            'g': "  \t1\n "
+            'g': "  \t1\n ",
+            'array': ["arra","arrb"]
         };
         
 
