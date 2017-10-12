@@ -235,11 +235,6 @@ var Runner = function () {
             var cq = def.$each;
             delete def.$each;
 
-            //make it into an array
-            if (!Array.isArray(cq)) {
-                cq = [cq];
-            }
-
             this.extractor(node, cq).forEach(function (node) {
                 collection.push(_this.parseNode(node, def));
             }, this);

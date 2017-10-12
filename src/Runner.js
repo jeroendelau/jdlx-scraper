@@ -86,12 +86,7 @@ export default class Runner
 
                 var cq = def.$each;
                 delete def.$each;
-                
-                //make it into an array
-                if (!Array.isArray(cq)) {
-                    cq = [cq];
-                }
-
+           
                 this.extractor(node, cq)
                     .forEach((node) => {
                         collection.push(this.parseNode(node, def));
